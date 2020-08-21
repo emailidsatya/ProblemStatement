@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+@using ProblemStatement_PromotionEngine.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    <h3>Cart Page</h3>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+
+            <th>Id</th>
+            <th>ProductId</th>
+            <th>Quantity</th>
+        </tr>
+        @if (ViewBag.carList != null)
+        {
+            foreach (CartModel item in ViewBag.carList)
+            {
+                <tr>
+                    
+                    <td><a href="@Url.Action("Remove", "Cart", new { id = item.CartId })">Remove</a></td>
+                    <td>@item.ProductId</td>
+                    <td>@item.Quantity</td>
+
+                </tr>
+            }
+            <tr>
+                <td align="right" colspan="2">Sum</td>
+                <td>
+                  
+                </td>
+            </tr>
+        }
+    </table>
+    <br>
+    <a href="@Url.Action("Index", "Shopping")">Continue Shopping</a>
+</body>
+</html>
